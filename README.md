@@ -94,6 +94,85 @@ http {
 
 ---
 
+# 🐧 Instalar Docker en Windows sin Docker Desktop, usando 
+
+## ✅ Requisitos previos
+Windows 10/11 actualizado
+
+WSL2 activado
+
+Ubuntu instalado desde Microsoft Store
+
+¿Ya tienes WSL2 y Ubuntu instalado? Si no, te lo explico abajo. Si sí, pasa a la instalación de Docker.
+
+## 🔧 PASO 1: Instalar WSL2 y Ubuntu
+1.1 Instala WSL con Ubuntu desde CMD o PowerShell:
+ ```
+wsl --install -d Ubuntu
+ ```
+
+Esto instala Ubuntu y configura WSL2 automáticamente. Luego reinicia tu PC si se te solicita.
+
+## 🐳 PASO 2: Instalar Docker en Ubuntu (WSL2)
+## <font color="#ff0000">Abre Ubuntu desde el menú Inicio.</font>
+
+ 
+
+Ejecuta estos comandos dentro de Ubuntu:
+ 
+```
+# Actualizar el sistema
+sudo apt update && sudo apt upgrade -y
+
+
+# Instalar Docker
+ 
+sudo apt install docker.io -y
+ 
+
+# Habilitar el servicio de Docker
+sudo service docker start
+
+# Añadir tu usuario al grupo docker (para evitar usar sudo cada vez)
+ 
+sudo usermod -aG docker $USER
+```
+
+Sal del terminal con exit, cierra Ubuntu y vuelve a abrirlo para aplicar los cambios de grupo.
+
+## ✅ Verifica que Docker funciona
+Dentro de Ubuntu:
+
+ ```
+docker --version
+docker run hello-world
+ ```
+
+Si ves un mensaje de bienvenida, Docker está funcionando sin Docker Desktop 🎉
+
+---
+## 🧠 Opcional: Ejecutar Docker automáticamente al abrir Ubuntu
+Cada vez que abras Ubuntu, ejecuta:
+```
+sudo service docker start
+```
+
+Para automatizarlo:
+ ```
+echo "sudo service docker start" >> ~/.bashrc
+ ```
+
+---
+## 🎁 Beneficios
+
+Mucho menos uso de CPU y RAM.
+
+Cero uso de Docker Desktop.
+
+Mejor integración con Linux-based dev tools.
+
+
+
 
 
 
